@@ -11,8 +11,8 @@ rm /var/www/html/index.html
 cp /var/www/html/index.nginx-debian.html /var/www/html/index.html
 [[ ! -z  "$AUTO_I" ]] || AUTO_I=0
 if [ "$AUTO_I" == "1" ]; then cp ./start/default_ai ./etc/nginx/sites-available/default ; fi
-service mysql restart
+service mysql reload
 service nginx restart
 mysql -u root < start/wordpress.sql
 service php7.3-fpm start
-/bin/bash
+tail -f /dev/null
